@@ -1,8 +1,8 @@
 
-#command = "rails g scaffold desc:text"
-#command = "rails g scaffold desc:text age:integer"
-#command = "rails g scaffold desc:tet age:integer"
-#command = "rails g scaffold desctet age:integer"
+#command = "rails g scaffold User desc:text"
+#command = "rails g scaffold User desc:text age:integer"
+#command = "rails g scaffold User desc:tet age:integer"
+#command = "rails g scaffold User desctet age:integer"
 command = ARGV[0] || ""
 if command == ""
   puts "rails g modelやrails g scaffoldのコマンド文字列を引数に渡してください"
@@ -11,9 +11,13 @@ end
 
 
 command_split = command.split
-column_args_start = 3
+column_args_start = 4
+if command_split.count <= column_args_start
+  puts "コマンド文字列が正しくありません"
+  return
+end
 models = command_split[column_args_start, command_split.length - column_args_start]
-puts "row = " + (command_split.length - column_args_start).to_s
+puts "colum = " + (command_split.length - column_args_start).to_s
 puts "models = " + models.inspect
 
 correct_types = ["string", "text", "integer", "float", "decimal", "datetime", "timestamp", "time", "date", "binary", "boolean"]

@@ -1,28 +1,29 @@
 # ModelSupport
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/model_support`. To experiment with that code, run `bin/console` for an interactive prompt.
+rails g scaffoldやrails g modelで型名をタイプミスしていないかチェックするツールです
 
 TODO: Delete this and the text above, and describe your gem
 
-## Installation
+## Installation インストール
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'model_support'
+gem 'model_support', github: 'volvicgeyser/model_support'
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install model_support
 
-## Usage
+## Usage 使い方
 
-TODO: Write usage instructions here
+    $ bundle exec chk_model_cmd "rails g model User name:string"
+    $ bundle exec chk_model_cmd "rails g model User name:sting"
 
 ## Development
 
