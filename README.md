@@ -2,8 +2,6 @@
 
 rails g scaffoldやrails g modelで型名をタイプミスしていないかチェックするツールです
 
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation インストール
 
 Add this line to your application's Gemfile:
