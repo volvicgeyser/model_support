@@ -1,0 +1,35 @@
+
+#command = "rails g scaffold desc:text"
+#command = "rails g scaffold desc:text age:integer"
+#command = "rails g scaffold desc:tet age:integer"
+#command = "rails g scaffold desctet age:integer"
+command = ARGV[0] || ""
+if command == ""
+  puts "rails g modelやrails g scaffoldのコマンド文字列を引数に渡してください"
+  return 
+end
+
+
+command_split = command.split
+column_args_start = 3
+models = command_split[column_args_start, command_split.length - column_args_start]
+puts "row = " + (command_split.length - column_args_start).to_s
+puts "models = " + models.inspect
+
+correct_types = ["string", "text", "integer", "float", "decimal", "datetime", "timestamp", "time", "date", "binary", "boolean"]
+bad_count = 0
+models.each do |x|
+  row_info = x.split(":")
+  if row_info.count != 2
+    puts row_info.inspect + "カラムの入力形式が間違っています 正しくは変数名:型名です"
+  end
+  type = row_info.last
+  if !correct_types.include?(type) 
+    puts x + " => " + type + "は正しくない型です" 
+    bad_count += 1 
+  end
+end
+
+if bad_count == 0
+  puts "正しい型です"
+end
